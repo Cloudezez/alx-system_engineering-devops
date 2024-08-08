@@ -1,29 +1,35 @@
 import json
 import requests
-import sys
+
+def fetch_data():
+    # URL to fetch data (example URL, adjust if needed)
+    url = 'https://jsonplaceholder.typicode.com/todos'
+    response = requests.get(url)
+    return response.json()
+
+def transform_data(data):
+    transformed = []
+    for item in data:
+        transformed_item = {
+            'id': item.get('id', 'N/A'),
+            'username': item.get('username', 'N/A'),  # Use .get() to avoid KeyError
+            'email': item.get('email', 'N/A'),
+            'address': item.get('address', 'N/A'),
+            'phone': item.get('phone', 'N/A')
+        }
+        transformed.append(transformed_item)
+    return transformed
+
+
+def main():
+    data = fetch_data()
+    transformed_data = transform_data(data)
+    
+    with open('todo_all_employees.json', 'w') as file:
+        json.dump(transformed_data, file, indent=4)
+    
+    print("Data exported to todo_all_employees.json")
 
 if __name__ == "__main__":
-    user_id = sys.argv[1]
-    user_url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
-    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
-
-    # Fetch user data
-    user = requests.get(user_url).json()
-    username = user.get("username")
-
-    # Fetch tasks data
-    todos = requests.get(todos_url).json()
-
-    # Prepare the list of dictionaries
-    tasks = [{"task": todo.get("title"),
-              "completed": todo.get("completed"),
-              "username": username} for todo in todos]
-
-    # Wrap the list in a dictionary with the user_id as the key
-    data = {user_id: tasks}
-
-    # Export the data to a JSON file
-    filename = f"{user_id}.json"
-    with open(filename, mode='w') as file:
-        json.dump(data, file)
+    main()
 

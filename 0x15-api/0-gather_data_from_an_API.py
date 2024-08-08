@@ -1,16 +1,15 @@
 #!/usr/bin/python3
 """
-A script that gathers data from a REST API for a given employee ID and exports
-the TODO list progress for that employee to a JSON file.
+A script that gathers data from a REST API for a given employee ID and displays
+the TODO list progress for that employee.
 """
 
-import json
-import requests
 import sys
+import requests
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: python3 2-export_to_JSON.py <employee_id>")
+        print("Usage: python3 0-gather_data_from_an_API.py <employee_id>")
         return
 
     try:
@@ -29,7 +28,7 @@ def main():
         print("User not found.")
         return
     user = user_response.json()
-    employee_name = user.get('username', 'Unknown')
+    employee_name = user.get('name', 'Unknown')
 
     # Fetch TODO list data
     todos_response = requests.get(todos_url)
@@ -41,24 +40,14 @@ def main():
     # Filter tasks for the given employee ID
     employee_tasks = [task for task in todos if task.get('userId') == employee_id]
 
-    # Prepare the data for JSON export
-    tasks_list = []
+    total_tasks = len(employee_tasks)
+    done_tasks = sum(1 for task in employee_tasks if task.get('completed'))
+
+    # Display the result
+    print(f"Employee {employee_name} is done with tasks({done_tasks}/{total_tasks}):")
     for task in employee_tasks:
-        task_info = {
-            "task": task.get('title'),
-            "completed": task.get('completed'),
-            "username": employee_name
-        }
-        tasks_list.append(task_info)
-
-    data = {str(employee_id): tasks_list}
-
-    # JSON filename
-    filename = '{}.json'.format(employee_id)
-
-    # Write to JSON file
-    with open(filename, mode='w') as jsonfile:
-        json.dump(data, jsonfile)
+        if task.get('completed'):
+            print(f"\t {task.get('title')}")
 
 if __name__ == "__main__":
     main()
