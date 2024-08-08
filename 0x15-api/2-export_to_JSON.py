@@ -2,23 +2,23 @@
 import json
 import requests
 import sys
-import traceback
-
-def export_to_json(employee_id):
-    url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
-    response = requests.get(url)
-    todos = response.json()
-    
-    filename = f"{employee_id}.json"
-    with open(filename, 'w') as jsonfile:
-        json.dump(todos, jsonfile)
-    print(f"JSON file '{filename}' created.")
 
 if __name__ == "__main__":
-    try:
-        employee_id = sys.argv[1]
-        export_to_json(employee_id)
-    except Exception as e:
-        print(f"Error occurred: {str(e)}", file=sys.stderr)
-        traceback.print_exc(file=sys.stderr)
+    user_id = sys.argv[1]
+    user_url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
+    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
+
+    user = requests.get(user_url).json()
+    todos = requests.get(todos_url).json()
+
+    username = user.get("username")
+    tasks = [{"task": todo.get("title"),
+              "completed": todo.get("completed"),
+              "username": username} for todo in todos]
+
+    data = {user_id: tasks}
+
+    filename = f"{user_id}.json"
+    with open(filename, mode='w') as file:
+        json.dump(data, file)
 

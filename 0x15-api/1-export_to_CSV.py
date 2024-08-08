@@ -2,32 +2,20 @@
 import csv
 import requests
 import sys
-import traceback
-
-def export_to_csv(employee_id):
-    url = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
-    response = requests.get(url)
-    todos = response.json()
-    
-    filename = f"{employee_id}.csv"
-    with open(filename, 'w', newline='') as csvfile:
-        fieldnames = ['USER_ID', 'ID', 'TITLE', 'COMPLETED']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        for todo in todos:
-            writer.writerow({
-                'USER_ID': todo['userId'],
-                'ID': todo['id'],
-                'TITLE': todo['title'],
-                'COMPLETED': todo['completed']
-            })
-    print(f"CSV file '{filename}' created.")
 
 if __name__ == "__main__":
-    try:
-        employee_id = sys.argv[1]
-        export_to_csv(employee_id)
-    except Exception as e:
-        print(f"Error occurred: {str(e)}", file=sys.stderr)
-        traceback.print_exc(file=sys.stderr)
+    user_id = sys.argv[1]
+    user_url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
+    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
+
+    user = requests.get(user_url).json()
+    todos = requests.get(todos_url).json()
+
+    username = user.get("username")
+    filename = f"{user_id}.csv"
+
+    with open(filename, mode='w', newline='') as file:
+        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+        for todo in todos:
+            writer.writerow([user_id, username, todo.get("completed"), todo.get("title")])
 

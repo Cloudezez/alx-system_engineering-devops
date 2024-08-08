@@ -1,31 +1,29 @@
-#!/usr/bin/python3
 import json
 import requests
 import sys
-import traceback
-
-def dictionary_of_list_of_dictionaries():
-    url = "https://jsonplaceholder.typicode.com/users"
-    response = requests.get(url)
-    users = response.json()
-    
-    user_dict = {}
-    for user in users:
-        user_dict[user['id']] = {
-            'name': user['name'],
-            'username': user['username'],
-            'email': user['email']
-        }
-    
-    filename = "user_data.json"
-    with open(filename, 'w') as jsonfile:
-        json.dump(user_dict, jsonfile)
-    print(f"Dictionary of lists of dictionaries file '{filename}' created.")
 
 if __name__ == "__main__":
-    try:
-        dictionary_of_list_of_dictionaries()
-    except Exception as e:
-        print(f"Error occurred: {str(e)}", file=sys.stderr)
-        traceback.print_exc(file=sys.stderr)
+    user_id = sys.argv[1]
+    user_url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
+    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
+
+    # Fetch user data
+    user = requests.get(user_url).json()
+    username = user.get("username")
+
+    # Fetch tasks data
+    todos = requests.get(todos_url).json()
+
+    # Prepare the list of dictionaries
+    tasks = [{"task": todo.get("title"),
+              "completed": todo.get("completed"),
+              "username": username} for todo in todos]
+
+    # Wrap the list in a dictionary with the user_id as the key
+    data = {user_id: tasks}
+
+    # Export the data to a JSON file
+    filename = f"{user_id}.json"
+    with open(filename, mode='w') as file:
+        json.dump(data, file)
 
