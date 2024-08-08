@@ -1,3 +1,4 @@
+!#/usr/bin/pthon3
 import json
 
 def load_data(filename):
