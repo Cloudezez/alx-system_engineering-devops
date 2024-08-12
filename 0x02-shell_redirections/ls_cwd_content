@@ -1,0 +1,36 @@
+total 1664
+drwxr-xr-x 2 root root   4096 Aug 12 14:06 .
+drwxr-xr-x 9 root root   4096 Aug 12 12:31 ..
+-rwxr-xr-x 1 root root     32 Aug 12 13:49 0-hello_world
+-rwxr-xr-x 1 root root    104 Aug 12 13:50 100-empty_casks
+-rwxr-xr-x 1 root root    149 Aug 12 13:50 101-gifs
+-rwxr-xr-x 1 root root     74 Aug 12 13:51 102-acrostic
+-rwxr-xr-x 1 root root     96 Aug 12 13:52 103-the_biggest_fan
+-rwxr-xr-x 1 root root     48 Aug 12 13:52 10-no_more_js
+-rwxr-xr-x 1 root root     56 Aug 12 13:52 11-directories
+-rwxr-xr-x 1 root root     51 Aug 12 13:53 12-newest_files
+-rwxr-xr-x 1 root root     27 Aug 12 13:53 13-unique
+-rwxr-xr-x 1 root root     39 Aug 12 13:53 14-findthatword
+-rwxr-xr-x 1 root root     38 Aug 12 13:54 15-countthatword
+-rwxr-xr-x 1 root root     41 Aug 12 13:54 16-whatsnext
+-rwxr-xr-x 1 root root     38 Aug 12 13:54 17-hidethisword
+-rwxr-xr-x 1 root root     50 Aug 12 13:55 18-letteronly
+-rwxr-xr-x 1 root root     25 Aug 12 13:55 19-AZ
+-rwxr-xr-x 1 root root     26 Aug 12 13:52 1-confused_smiley
+-rwxr-xr-x 1 root root     23 Aug 12 13:55 20-hiago
+-rwxr-xr-x 1 root root     16 Aug 12 13:55 21-reverse
+-rwxr-xr-x 1 root root     59 Aug 12 13:56 22-users_and_homes
+-rwxr-xr-x 1 root root     29 Aug 12 12:42 2-hellofile
+-rwxr-xr-x 1 root root     44 Aug 12 12:42 3-twofiles
+-rwxr-xr-x 1 root root     36 Aug 12 12:43 4-lastlines
+-rwxr-xr-x 1 root root     36 Aug 12 12:44 5-firstlines
+-rwxr-xr-x 1 root root     31 Aug 12 12:45 6-third_line
+-rwxr-xr-x 1 root root     73 Aug 12 12:45 7-file
+-rwxr-xr-x 1 root root     37 Aug 12 12:46 8-cwd_state
+-rwxr-xr-x 1 root root     38 Aug 12 12:46 9-duplicate_last_line
+-rw-r--r-- 1 root root     12 Aug 12 14:05 *\\Best School\\*$\?\*\*\*\*\*:)
+-rw-r--r-- 1 root root    801 Aug 12 14:04 iacta
+-rw-r--r-- 1 root root      0 Aug 12 14:06 ls_cwd_content
+-rw-r--r-- 1 root root 782913 Mar  8  2022 nasa_19950801.tsv
+-rw-r--r-- 1 root root 782913 Mar  8  2022 nasa_19950801.tsv.1
+-rw-r--r-- 1 root root   1157 Aug 12 13:16 README.md
