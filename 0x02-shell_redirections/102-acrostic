@@ -1,0 +1,5 @@
+#!/bin/bash
+while IFS= read -r line; do
+  echo -n "${line:0:1}"
+done
+echo
