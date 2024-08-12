@@ -1,3 +1,2 @@
 #!/bin/bash
 find . -type f -name "*.gif" -print0 | xargs -0 stat -c "%s %n" | sort -f -n | awk '{print substr($0, index($0, $2))}' | sed 's/.gif$//'
-
