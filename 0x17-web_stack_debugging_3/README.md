@@ -76,6 +76,5 @@ root@e514b399d69d:~# curl -s 127.0.0.1:80 | grep Holberton
 Repository:
 
 GitHub repository: alx-system_engineering-devops
-Directory: 0x17-web_stack_debugging_3
+Directory: 0x17-web_stack_debugging
 File: 0-strace_is_your_friend.pp
-
