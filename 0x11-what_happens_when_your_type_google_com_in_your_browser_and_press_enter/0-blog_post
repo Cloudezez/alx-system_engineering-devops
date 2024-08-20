@@ -1,0 +1,21 @@
+What Happens When You Type https:As a complete note on this method, the following URL is recommended: //www. google. com and Press Enter?
+Typing https://www. google. To see Google’s homepage when you type ‘com into your browser and press enter, several important processes are executed. Here’s a simplified overview:
+
+DNS Request: The process initiates when your web browser translates the domain name to an IP address; Google in this case. translate the WWW address www. com into its designated numeric worth an IP address. It starts by checking its local DNS cache and, if the requested domain name cannot be resolved, the computer sends the request to a DNS resolver which in turn goes to the root, TLD and authoritative DNS to obtain the IP address.
+
+TCP/IP: Using the IP address, the browser opens a connection with help of TCP over IP. This involves a three-way handshake: In other words, when you open a website in your browser and send a SYN packet the server replies with a SYN-ACK packet and your browser finishes it off with an ACK packet.
+
+Firewall: Your request to Google also go through firewalls as does the response from Google. These security systems block traffic to the networks and the internet to prevent rouge applications to interface safely with the networks.
+
+HTTPS/SSL: Inasmuch as the URL begins with https, then it means that SSL/TLS (Secure Sockets Layer/Transport Layer Security) connection is created. The server gives a stamp that a browser can check to start an encrypted session.
+
+Load-Balancer: Load balancers are applied in Google to divide the incoming traffic among several servers. That is a way of managing the load and guaranteeing that high performance and reliability will always be achieved.
+
+Web Server: The request gets to a Google web server that handles it by serving other static files such as HTML files, CSS, JavaScripts among others.
+
+Application Server: For dynamic content the request is forwarded to an application server where server side of scripting occurs and interaction with databases takes place.
+
+Database: If required it communicates with databases to get the data for reading or modification before sending the final response to your browser.
+
+Every one of these steps guarantees you are given Google’s homepage quickly and safely.
+
